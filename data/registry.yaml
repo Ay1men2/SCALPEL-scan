@@ -1,0 +1,84 @@
+# SCALPEL Dataset Registry
+# Add new datasets: create JSONL file + add entry here. No code changes needed.
+#
+# JSONL schema (each line):
+#   {"id": str, "prompt": str, "category": str, "source": str, "meta": {}}
+
+# ─── Safety: attack success evaluation ──────────────────────────────────────
+
+advbench:
+  path: safety/advbench.jsonl
+  category: safety
+  size: 101
+  source: "Zou et al. 2023"
+  description: "AdvBench harmful behaviors (backward compat)"
+
+harmbench:
+  path: safety/harmbench.jsonl
+  category: safety
+  size: 159
+  source: "Mazeika et al. 2024"
+  description: "HarmBench standard test behaviors, 6 semantic categories"
+
+harmbench10:
+  path: safety/harmbench10.jsonl
+  category: safety
+  size: 10
+  source: "Mazeika et al. 2024"
+  description: "HarmBench stratified 10-prompt sample (seed=42), 6 categories"
+
+harmbench20:
+  path: safety/harmbench20.jsonl
+  category: safety
+  size: 20
+  source: "Mazeika et al. 2024"
+  description: "HarmBench stratified 20-prompt sample (seed=42), 6 categories"
+
+# ─── Benign: utility preservation ────────────────────────────────────────────
+
+benign:
+  path: benign/benign_baseline.jsonl
+  category: benign
+  size: 5
+  source: "internal"
+  description: "Sanity-check probes (math, code, translation)"
+
+# ─── Capability: quantitative benchmarks (loaded from HuggingFace) ──────────
+
+mmlu:
+  loader: huggingface
+  hf_path: "cais/mmlu"
+  hf_subset: "all"
+  category: capability
+  source: "Hendrycks et al. 2021"
+  description: "57 subjects, ~14K questions, 5-shot multiple choice"
+
+gsm8k:
+  loader: huggingface
+  hf_path: "openai/gsm8k"
+  hf_subset: "main"
+  category: capability
+  source: "Cobbe et al. 2021"
+  description: "1319 grade-school math word problems, 8-shot CoT"
+
+# ─── Aliases (slices of existing datasets) ──────────────────────────────────
+
+aliases:
+  test8:
+    dataset: advbench
+    slice: ":8"
+  advbench20:
+    dataset: advbench
+    slice: ":20"
+  advbench50:
+    dataset: advbench
+    slice: ":50"
+  advbench100:
+    dataset: advbench
+    slice: ":"
+  benign5:
+    dataset: benign
+    slice: ":"
+  harmbench30:
+    dataset: harmbench
+    slice: ":30"

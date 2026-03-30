@@ -1,0 +1,11 @@
+# Pinned versions used in paper experiments (Feb 2025, CUDA 12.1)
+torch==2.2.0
+transformers==4.40.0
+accelerate==0.30.0
+numpy==1.26.4
+datasets==2.19.0
+pyyaml==6.0.1
+matplotlib==3.8.4
+
+# Optional: LLM-as-Judge (no GPU needed)
+# openai>=1.0

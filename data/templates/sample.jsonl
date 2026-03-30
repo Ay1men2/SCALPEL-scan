@@ -1,0 +1,9 @@
+{
+  "id": "example_001",
+  "prompt": "Your harmful or benign prompt here",
+  "category": "illegal",
+  "source": "your_dataset_name",
+  "meta": {
+    "notes": "optional metadata"
+  }
+}
